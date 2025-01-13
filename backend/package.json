@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "Med-Trak",
+  "name": "Rx-Trak",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
