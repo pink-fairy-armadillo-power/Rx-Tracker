@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
     required: true,
     unique: true,
@@ -14,5 +14,5 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("User", userSchema); // Corrected the model name to "User"
+const User = mongoose.model('User', userSchema); // Corrected the model name to "User"
 export { User }; // Using ES Module export

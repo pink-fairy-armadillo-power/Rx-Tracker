@@ -7,26 +7,26 @@ export interface LoginResponse {
 
 export const api = {
   login: async (username: string, password: string): Promise<LoginResponse> => {
-    const response = await fetch(`${API_URL}/users/login`, {
+    const response = await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     });
-    
+
     if (!response.ok) {
       throw new Error('Invalid credentials');
     }
-    
+
     return response.json();
   },
 
   signup: async (username: string, password: string): Promise<void> => {
-    const response = await fetch(`${API_URL}/users/signup`, {
+    const response = await fetch(`${API_URL}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || 'Failed to create account');
@@ -42,23 +42,30 @@ export const api = {
     const response = await fetch(`${API_URL}/medicines/${userId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(medicine)
+      body: JSON.stringify(medicine),
     });
     return response.json();
   },
 
-  updateMedicine: async (userId: string, medicineId: string, medicine: Partial<Medicine>) => {
-    const response = await fetch(`${API_URL}/medicines/${userId}/${medicineId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(medicine)
-    });
+  updateMedicine: async (
+    userId: string,
+    medicineId: string,
+    MedicineName: Partial<Medicine>
+  ) => {
+    const response = await fetch(
+      `${API_URL}/medicines/${userId}/${medicineId}`,
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(medicine),
+      }
+    );
     return response.json();
   },
 
   deleteMedicine: async (userId: string, medicineId: string) => {
     await fetch(`${API_URL}/medicines/${userId}/${medicineId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
-  }
+  },
 };
