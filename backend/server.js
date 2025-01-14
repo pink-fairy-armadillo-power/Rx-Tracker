@@ -11,10 +11,6 @@ import { signup, login, logout } from './controllers/userControllers.js';
 // Load environment variables from .env file if not in production
 import authenticate from './middleware/authenticate.js';
 import medicationsController from './controllers/medicationsController.js';
-import {
-  getMedications,
-  addMedication,
-} from './controllers/medicationsController.js';
 
 dotenv.config();
 
