@@ -27,3 +27,8 @@ To get started
 - to start front end enter: `npm run dev`
 - Run npm install in backend folder for backend dependencies
 - to start backend server `npm run dev`
+
+
+Technology
+- frontend: typescript/jsx/js, react router, tailwind
+- backend: node.js/express.js
