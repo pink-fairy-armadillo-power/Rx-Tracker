@@ -22,3 +22,8 @@ stretch goals:
 - security for multiple users
 - flag potential medication interactions
 
+To get started
+- Run npm install in client folder for front end dependencies
+- to start front end enter: `npm run dev`
+- Run npm install in backend folder for backend dependencies
+- to start backend server `npm run dev`
