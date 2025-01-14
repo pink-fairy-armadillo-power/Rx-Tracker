@@ -18,4 +18,7 @@ whats interesting about our project?
 
 stretch goals:
 - reminder/notification for taking medicine
+- external api
+- security for multiple users
+- flag potential medication interactions
 
