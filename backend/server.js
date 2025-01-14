@@ -29,10 +29,12 @@ connectToDb().then(() => {
 
   // Routes
 });
+//auth routes
+app.post('/api/signup', signup);
+app.post('/api/login', login);
+app.post('/api/logout', logout);
 
-app.post('/signup', signup);
-app.post('/login', login);
-app.post('/logout', logout);
+//medication routes
 app.use('/api', medicationsController);
 
 app.get('/about', async (req, res) => {

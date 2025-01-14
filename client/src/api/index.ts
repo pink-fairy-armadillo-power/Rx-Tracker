@@ -5,6 +5,17 @@ export interface LoginResponse {
   username: string;
 }
 
+export interface Medication {
+  userId: string;
+  MedicineName: string;
+  Dosage: string;
+  NumberOfPills: string;
+  MedicalReason: string;
+  Frequency: string;
+  Notes: string;
+  id?: string;
+}
+
 export const api = {
   login: async (username: string, password: string): Promise<LoginResponse> => {
     const response = await fetch(`${API_URL}/login`, {
@@ -33,38 +44,38 @@ export const api = {
     }
   },
 
-  getMedicines: async (userId: string) => {
+  getMedications: async (userId: string) => {
     const response = await fetch(`${API_URL}/medicines/${userId}`);
     return response.json();
   },
 
-  addMedicine: async (userId: string, medicine: Omit<Medicine, 'id'>) => {
+  addMedication: async (userId: string, medication: Omit<Medication, 'id'>) => {
     const response = await fetch(`${API_URL}/medicines/${userId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(medicine),
+      body: JSON.stringify(medication),
     });
     return response.json();
   },
 
   updateMedicine: async (
     userId: string,
-    medicineId: string,
-    MedicineName: Partial<Medicine>
+    medicationId: string,
+    medication: Partial<Medication>
   ) => {
     const response = await fetch(
-      `${API_URL}/medicines/${userId}/${medicineId}`,
+      `${API_URL}/medicines/${userId}/${medicationId}`,
       {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(medicine),
+        body: JSON.stringify(medication),
       }
     );
     return response.json();
   },
 
-  deleteMedicine: async (userId: string, medicineId: string) => {
-    await fetch(`${API_URL}/medicines/${userId}/${medicineId}`, {
+  deleteMedicine: async (userId: string, medicationId: string) => {
+    await fetch(`${API_URL}/medicines/${userId}/${medicationId}`, {
       method: 'DELETE',
     });
   },
